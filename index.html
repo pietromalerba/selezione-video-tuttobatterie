@@ -175,6 +175,19 @@
       text-transform: capitalize;
     }
 
+    .product-link {
+      display: inline-block;
+      margin: 8px 0 16px;
+      color: var(--accent);
+      font-size: 0.96rem;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .product-link:hover {
+      text-decoration: underline;
+    }
+
     .section-count {
       color: var(--muted);
       font-size: 0.92rem;
@@ -402,6 +415,10 @@
       {
         title: "NBA ermetica",
         codePrefix: "NBAE",
+        product: {
+          title: "BATTERIA NBA ERMETICA AL GEL 52L3GEL 12V 70AH",
+          url: "https://www.tuttobatterie.com/batteria-nba-ermetica-al-gel-52l3gel-12v-70ah.html"
+        },
         videos: [
           "nba-ermetica/ UCG_BATTERIA per pannelli sloari NBA ERMETICA AL GEL 52L3GEL presa su Tuttobatterie(1).com_#1.mp4",
           "nba-ermetica/ UCG_BATTERIA per pannelli sloari NBA ERMETICA AL GEL 52L3GEL presa su Tuttobatterie(1).com_#3.mp4",
@@ -493,6 +510,11 @@
             </article>
           `;
         }).join("");
+        const productLink = group.product ? `
+          <a class="product-link" href="${group.product.url}" target="_blank" rel="noopener noreferrer">
+            ${group.product.title}
+          </a>
+        ` : "";
 
         return `
           <section class="section">
@@ -500,6 +522,7 @@
               <h2>${group.title}</h2>
               <span class="section-count">${group.videos.length} video</span>
             </div>
+            ${productLink}
             <div class="grid">${cards}</div>
           </section>
         `;
