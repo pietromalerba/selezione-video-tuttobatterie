@@ -221,6 +221,26 @@
       background: #101217;
     }
 
+    .download-video {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      color: #fff;
+      background: #1769e0;
+      font-size: 0.9rem;
+      font-weight: 900;
+      text-align: center;
+      text-decoration: none;
+      letter-spacing: 0;
+    }
+
+    .download-video:hover {
+      background: #0f55bf;
+    }
+
     .card-body {
       padding: 12px;
     }
@@ -503,13 +523,15 @@
           const code = videoCode(groupIndex, videoIndex);
           const choice = state[id] || "";
           const status = choice === "ok" ? "OK" : choice === "no" ? "Non OK" : "";
+          const encodedPath = encodePath(path);
 
           return `
             <article class="card" data-id="${id}" data-choice="${choice}">
               <div class="video-wrap">
-                <video src="${encodePath(path)}" controls preload="metadata" playsinline></video>
+                <video src="${encodedPath}" controls preload="metadata" playsinline></video>
               </div>
               <div class="card-body">
+                <a class="download-video" href="${encodedPath}" download="${code}.mp4">SCARICA VIDEO</a>
                 <p class="video-title">
                   <span>Video ${videoIndex + 1} · ${code}</span>
                   <span class="status">${status}</span>
